@@ -1,9 +1,11 @@
+# Use a base image with Java runtime
 FROM openjdk:8-jre-slim
 
-VOLUME /tmp
+# Set working directory
+WORKDIR /app
 
-# Add your Spring Boot JAR to the container
-COPY target/springboot-application-0.0.1-SNAPSHOT.jar springboot-application.jar
+# Copy the JAR file into the container
+COPY target/springboot-application-0.0.1-SNAPSHOT.jar app.jar
 
 # Run the JAR file
-ENTRYPOINT ["java", "-jar", "/springboot-application.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
